@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_30_153225) do
+ActiveRecord::Schema.define(version: 2020_10_13_180318) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,18 @@ ActiveRecord::Schema.define(version: 2020_07_30_153225) do
     t.index ["seller_id"], name: "index_listings_on_seller_id"
   end
 
+  create_table "requests", force: :cascade do |t|
+    t.string "phone"
+    t.string "message"
+    t.bigint "listing_id", null: false
+    t.bigint "buyer_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.index ["buyer_id"], name: "index_requests_on_buyer_id"
+    t.index ["listing_id"], name: "index_requests_on_listing_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
@@ -38,4 +50,5 @@ ActiveRecord::Schema.define(version: 2020_07_30_153225) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "requests", "listings"
 end

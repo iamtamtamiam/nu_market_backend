@@ -12,3 +12,8 @@ mj = User.create(username:"mary", password:"jo")
 Listing.create(item:"dog toy", description:"for a good dog", price: 15, condition: "new", status: "available", zipcode: 77089, contact: "email me at ilydogs@yahoo.com", seller: don)
 Listing.create(item:"bike", description:"red, tires new", price: 100, condition: "used - good", status: "pending", zipcode: 77586, contact: "call 777-777-7777", seller: don)
 Listing.create(item:"chair", description:"wicker, with cushion", price: 20, condition: "used - like new", status: "sold", zipcode: 77581, contact: "call 777-777-7777", seller: don, buyer: mj)
+
+toy = Listing.find_by(id: 1)
+
+
+Request.create(name: "your buddy, mary", phone:"2818987687", message: "i'll take it!", buyer: mj, listing: toy)
