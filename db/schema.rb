@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_13_180318) do
+ActiveRecord::Schema.define(version: 2020_10_19_015147) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,14 @@ ActiveRecord::Schema.define(version: 2020_10_13_180318) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["buyer_id"], name: "index_listings_on_buyer_id"
     t.index ["seller_id"], name: "index_listings_on_seller_id"
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.string "url"
+    t.bigint "listing_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["listing_id"], name: "index_photos_on_listing_id"
   end
 
   create_table "requests", force: :cascade do |t|
@@ -50,5 +58,6 @@ ActiveRecord::Schema.define(version: 2020_10_13_180318) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "photos", "listings"
   add_foreign_key "requests", "listings"
 end
