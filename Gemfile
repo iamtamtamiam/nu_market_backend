@@ -19,6 +19,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem "figaro"
 gem 'fast_jsonapi'
 
+gem 'rest-client'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

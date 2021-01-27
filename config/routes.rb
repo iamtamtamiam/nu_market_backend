@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   post "/logout", to: "sessions#destroy"
   get "/get_current_user", to: "sessions#get_current_user"
   
+  get "/zipcodes", to: "zipcodes#show"
+
   resources :users
   resources :listings
   resources :requests
