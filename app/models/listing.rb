@@ -5,4 +5,5 @@ class Listing < ApplicationRecord
   has_many :photos
 
   validates :item, presence: true
+  validates :zipcode, presence: true
 end
